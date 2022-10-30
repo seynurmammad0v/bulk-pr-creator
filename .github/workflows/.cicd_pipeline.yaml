@@ -10,6 +10,7 @@ env:
 
 jobs:
   deploy-repo:
+    #todo change to self-hosted running
     #    if: ${{ github.ref_name == 'master' }}
     #    runs-on: [ self-hosted, linux, prod ]
     runs-on: ubuntu-latest
@@ -26,9 +27,12 @@ jobs:
           pip install cerberus
       - name: Identify user
         run: |
-            git config --global user.email "${GITHUB_ACTOR}"
-            git config --global user.name "${GITHUB_ACTOR}@bulk.com"
+          git config --global user.email "${GITHUB_ACTOR}"
+          git config --global user.name "${GITHUB_ACTOR}@bulk.com"
       - name: Apply scripts
-        run: ./apply.sh
+        run: |
+          chmod u+x apply.sh
+          ./apply.sh
+    # todo uncomment
     #      - name: Updating github PAT from secrets to null
     #        run: gh secret set GH_TOKEN --body "null"

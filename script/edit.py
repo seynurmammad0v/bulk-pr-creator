@@ -20,12 +20,13 @@ def edit_file(data):
             is_changed = True if change_str(file.get('path'), file.get('changes')) else print("No changes in {}",
                                                                                               file.get('path'))
         if is_changed:
-            os.system('git checkout -b {}'.format(github['branch']))
-            os.system('git add .')
-            os.system('git commit -m "{}"'.format(github.get('commit')))
-            os.system('git push -u origin {}'.format(github.get('branch')))
-            if github.get('cancel').get('pipeline'):
-                os.system(" gh run list --limit 1 --json databaseId -q '.[].databaseId' \
-                | tr -s  '\n' | xargs  -n1 gh run cancel")
+            push_changes(github)
+            cancel_pipeline(github)
         os.chdir('../')
         shutil.rmtree(ms)
+
+
+
+
+
+

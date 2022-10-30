@@ -1,1 +1,2 @@
-python ./script/main.py change-test
+python ./script/main.py test-edit
+#python ./script/main.py test-pr
