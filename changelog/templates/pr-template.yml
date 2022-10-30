@@ -1,0 +1,10 @@
+bulk:
+  pr:
+    from: <branch-name>
+    to: <branch-name>
+    name: <PR-name>
+    body: <PR-body>
+    assignee: <assignee-person>
+    cancel:
+      pipeline: <true|false>
+    repos: <repos-list-file>
