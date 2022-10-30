@@ -26,12 +26,9 @@ jobs:
           pip install cerberus
       - name: Identify user
         run: |
-          git config --global user.email "${GITHUB_ACTOR}"
-          git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+            git config --global user.email "${GITHUB_ACTOR}"
+            git config --global user.name "${GITHUB_ACTOR}@bulk.com"
       - name: Apply scripts
         run: ./apply.sh
-        env:
-          GITHUB_ORG: ${{ secrets.GH_ORG }}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
     #      - name: Updating github PAT from secrets to null
     #        run: gh secret set GH_TOKEN --body "null"

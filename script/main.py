@@ -35,7 +35,6 @@ if __name__ == '__main__':
 
     if data.get('edit'):
         edit_file(data.get('edit'))
-        print("edit")
 
     if data.get('create'):
         print("create")
