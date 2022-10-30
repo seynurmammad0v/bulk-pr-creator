@@ -1,4 +1,5 @@
 import os
+import time
 
 
 def change_str(path, changes):
@@ -25,6 +26,7 @@ def push_changes(github):
 
 def cancel_pipeline(github):
     if github.get('cancel').get('pipeline'):
+        # waiting to create workflow runs
+        time.sleep(3)
         os.system(" gh run list --limit 1 --json databaseId -q '.[].databaseId' \
                 | tr -s  '\n' | xargs  -n1 gh run cancel")
-
