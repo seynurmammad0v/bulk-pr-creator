@@ -1,0 +1,37 @@
+name: Build and Deploy
+
+on: push
+
+env:
+  GITHUB_ORG: ${{ secrets.GH_ORG }}
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  ENCRYPTED_VALUE: ${{ secrets.ENCRYPTED_VALUE }}
+  KEY_ID: ${{ secrets.KEY_ID }}
+
+jobs:
+  deploy-repo:
+    #    if: ${{ github.ref_name == 'master' }}
+    #    runs-on: [ self-hosted, linux, prod ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install libraries
+        run: |
+          pip install pyyaml
+          pip install cerberus
+      - name: Identify user
+        run: |
+          git config --global user.email "${GITHUB_ACTOR}"
+          git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+      - name: Apply scripts
+        run: ./apply.sh
+        env:
+          GITHUB_ORG: ${{ secrets.GH_ORG }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+    #      - name: Updating github PAT from secrets to null
+    #        run: gh secret set GH_TOKEN --body "null"

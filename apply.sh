@@ -1,0 +1,1 @@
+python ./script/main.py change-test
