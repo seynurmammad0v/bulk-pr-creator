@@ -64,7 +64,7 @@ $ python ./script/main.py <filename> {<org> | <username>} <token>
 **_For using this tool you should set 2 secrets in GitHub_**
 **_repo_** ([How to set secret?](https://docs.github.com/en/actions/security-guides/encrypted-secrets)) :
 
-> ```<GH_ORG>``` name of organization (or username of user) in which repo located
+> ```GH_ORG``` name of organization (or username of user) in which repo located
 
 > ```GH_TOKEN``` personal access token of
 >user ([How to create PAT?](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)) \
