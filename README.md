@@ -89,7 +89,7 @@ $ python ./script/main.py <filename>
 _**The edit action changes file, commit and push the changes on GitHub.**_
 
 ```YML file:```
-```
+```yaml
 bulk:
   edit:
     files:
@@ -118,7 +118,7 @@ bulk:
 **_The edit action changes file, commit and push the changes on GitHub._**
 
 ```YML file:```
-```
+```yaml
 bulk:
   pr:
     from: <branch-name which from creating pr>
@@ -135,7 +135,7 @@ bulk:
 _**You can also combine this actions in one yml file**_ :
 
 ```YML file:```
-```
+```yaml
 bulk:
   edit:
     files:
