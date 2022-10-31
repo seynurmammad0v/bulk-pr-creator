@@ -1,0 +1,30 @@
+bulk:
+  edit:
+    files:
+      - path: <path the file in ms which will be edited>
+        changes:
+          - from: <what to change>
+            to: <change to>
+          - from: <what to change>
+            to: <change to>
+      - path: <path the file in ms which will be edited>
+        changes:
+          - from: <what to change>
+            to: <change to>
+          - from: <what to change>
+            to: <change to>
+    github:
+      branch: <branch name>
+      commit: <commit name>
+      cancel:
+        pipeline: <true if you want to cancel the pipeline otherwise false >
+    repos: <name of repo list with extension>
+  pr:
+    from: <branch-name>
+    to: <branch-name>
+    name: <PR-name>
+    body: <PR-body>
+    assignee: <assignee-person>
+    cancel:
+      pipeline: <true|false>
+    repos: <repos-list-file>
