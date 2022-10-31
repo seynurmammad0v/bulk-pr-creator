@@ -1,4 +1,5 @@
 import os
+import shutil
 import sys
 import time
 
@@ -22,7 +23,6 @@ def change_str(path, changes):
 
 
 def push_changes(github):
-    os.system('git checkout -b {}'.format(github.get('branch')))
     os.system('git add .')
     os.system('git commit -m "{}"'.format(github.get('commit')))
     os.system('git push -u origin {}'.format(github.get('branch')))
@@ -73,3 +73,22 @@ def get_ms_list(filename):
     path = "repo_list/{}".format(filename)
     validate_file(path)
     return open(path, 'r').readlines()
+
+
+def copy_file(filename, destination):
+    file_path = "../changelog/files/{}".format(filename)
+    # print('chmod -R 777 {}{}'.format(os.getcwd(), destination))
+    if destination == '':
+        destination = os.getcwd()
+    shutil.copy2(file_path, '{}'.format(destination))
+
+
+def login_git(org, ms, branch):
+    url = "https://oauth2:{}@github.com/{}/{}.git".format(os.getenv('GITHUB_TOKEN'), org, ms)
+    os.system('git clone {}'.format(url))
+    if not validate_ms(ms):
+        return False
+    os.chdir(ms)
+    os.system('git remote set-url origin {}'.format(url))
+    os.system('git checkout {} 2>/dev/null || git checkout -b {}'.format(branch, branch))
+    return True
