@@ -19,3 +19,12 @@ bulk:
       cancel:
         pipeline: true
     repos: repos.md
+  pr:
+    from: test-bulk-pr-script
+    to: develop
+    name: "Test bulk pr script"
+    body: "Test body"
+    assignee: "@me"
+    cancel:
+      pipeline: true
+    repos: repos.md

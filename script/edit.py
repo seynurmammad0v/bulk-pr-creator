@@ -1,14 +1,13 @@
 import os
 import shutil
 
-from helper import *
+from helper import get_ms_list, push_changes, cancel_pipeline, change_str
 
 
 def edit_file(data):
     github = data.get('github')
     org = os.getenv('GITHUB_ORG')
-    repos_file = "repo_list/{}".format(data.get('repos'))
-    ms_list = open(repos_file, 'r').readlines()
+    ms_list = get_ms_list(data.get('repos'))
     for ms in ms_list:
         ms = ms.replace('\n', '')
         url = "https://oauth2:{}@github.com/{}/{}.git".format(os.getenv('GITHUB_TOKEN'), org, ms)
@@ -24,9 +23,3 @@ def edit_file(data):
             cancel_pipeline(github)
         os.chdir('../')
         shutil.rmtree(ms)
-
-
-
-
-
-

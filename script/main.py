@@ -1,21 +1,23 @@
+import os
 import sys
+
 import yaml
-from cerberus import Validator
 
-from schema import schema
-
-from edit import *
+from edit import edit_file
+from helper import validate, validate_yml
+from pr import open_pr
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("The necessary arguments were not provided : <changelog-file>")
-        sys.exit(5)
+    N = len(sys.argv)
+    validate(N)
+
+    # for local run
+    if N == 4:
+        os.environ["GITHUB_ORG"] = sys.argv[2]
+        os.environ["GITHUB_TOKEN"] = sys.argv[3]
+        os.system("git config --global --unset https.proxy")
 
     filepath = "changelog/" + sys.argv[1] + ".yml"
-    if not os.path.exists(filepath):
-        print("The necessary file is not exist :" + filepath)
-        sys.exit(5)
-
     with open(filepath, "r") as stream:
         try:
             data = yaml.safe_load(stream)
@@ -24,12 +26,7 @@ if __name__ == '__main__':
             print("Cannot parce yml file: " + filepath)
             sys.exit(5)
 
-    v = Validator(schema)
-    if not v.validate(data, schema):
-        print("Validation error of file: " + filepath)
-        print("Error description: ")
-        print(v.errors)
-        sys.exit(5)
+    validate_yml(data, filepath)
 
     data = data['bulk']
 
@@ -40,4 +37,4 @@ if __name__ == '__main__':
         print("create")
 
     if data.get('pr'):
-        print('pr')
+        open_pr(data.get('pr'))
