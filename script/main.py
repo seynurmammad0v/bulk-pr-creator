@@ -1,11 +1,13 @@
 import os
 import sys
+import time
 
 import yaml
 
 from edit import edit_file
 from helper import validate, validate_yml
 from pr import open_pr
+from create import create_file
 
 if __name__ == '__main__':
     N = len(sys.argv)
@@ -34,7 +36,7 @@ if __name__ == '__main__':
         edit_file(data.get('edit'))
 
     if data.get('create'):
-        print("create")
+        create_file(data.get('create'))
 
     if data.get('pr'):
         open_pr(data.get('pr'))

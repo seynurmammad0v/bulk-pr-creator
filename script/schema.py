@@ -60,6 +60,56 @@ schema = {
                     }
                 }
             },
+            'create': {
+                'schema': {
+                    'files': {
+                        "type": "list",
+                        'required': True,
+                        "schema":
+                            {
+                                "type": "dict",
+                                "schema": {
+
+                                    'filename': {
+                                        'required': True,
+                                        'type': 'string'
+                                    },
+                                    'destination': {
+                                        'required': True,
+                                        'type': 'string'
+                                    },
+
+                                }
+                            }
+                    },
+                    'github': {
+                        'required': True,
+                        'schema': {
+                            'branch': {
+                                'required': True,
+                                'type': 'string'
+                            },
+                            'commit': {
+                                'required': True,
+                                'type': 'string'
+                            },
+                            'cancel': {
+                                'required': True,
+                                'schema': {
+                                    'pipeline': {
+                                        'required': True,
+                                        'type': 'boolean'
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    'repos': {
+                        'required': True,
+                        'type': 'string'
+                    }
+                }
+            },
             'pr': {
                 'schema': {
                     'from': {'type': 'string', 'required': True},

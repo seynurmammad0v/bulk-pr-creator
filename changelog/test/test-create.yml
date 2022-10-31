@@ -1,0 +1,13 @@
+bulk:
+  create:
+    files:
+      - filename: text.txt
+        destination : ''
+      - filename: text.txt
+        destination: 'src'
+    github:
+      branch: test-create
+      commit: 'Test bulk create'
+      cancel:
+        pipeline: true
+    repos: repos.md

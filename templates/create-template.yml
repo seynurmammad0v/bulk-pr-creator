@@ -1,0 +1,13 @@
+bulk:
+  create:
+    files:
+      - filename: <file name with extension>
+        destination : <destination of file>
+      - filename: <file name with extension>
+        destination: <destination of file>
+    github:
+      branch: <branch name>
+      commit: <commit name>
+      cancel:
+        pipeline: <true if you want to cancel the pipeline otherwise false >
+    repos: <name of repo list with extension>

@@ -86,7 +86,7 @@ $ python ./script/main.py <filename>
 
 **_EDIT_**:
 
-_**The edit action changes file, commit and push the changes on GitHub.**_
+_**The edit action changes file, commit and push changes to GitHub.**_
 
 ```YML file:```
 ```yaml
@@ -113,9 +113,31 @@ bulk:
     repos: <name of repo list with extension>
 
 ```
+
+**_CREATE_**:
+
+**_The creation action copies defined file to path destination in MS, then commit and push changes to GitHub._**
+
+```YML file:```
+```yaml
+bulk:
+  create:
+    files:
+      - filename: <file name with extension>
+        destination : <destination of file>
+      - filename: <file name with extension>
+        destination: <destination of file>
+    github:
+      branch: <branch name>
+      commit: <commit name>
+      cancel:
+        pipeline: <true if you want to cancel the pipeline otherwise false >
+    repos: <name of repo list with extension>
+```
+
 **_PR creating_**:
 
-**_The edit action changes file, commit and push the changes on GitHub._**
+**_The PR action creates PR from X branch to Y branch._**
 
 ```YML file:```
 ```yaml
@@ -157,6 +179,18 @@ bulk:
       cancel:
         pipeline: <true if you want to cancel the pipeline otherwise false >
     repos: <name of repo list with extension>
+  create:
+    files:
+      - filename: <file name with extension>
+        destination : <destination of file>
+      - filename: <file name with extension>
+        destination: <destination of file>
+    github:
+      branch: <branch name>
+      commit: <commit name>
+      cancel:
+        pipeline: <true if you want to cancel the pipeline otherwise false >
+    repos: <name of repo list with extension>
   pr:
     from: <branch-name which from creating pr>
     to: <pr to branch-name>
@@ -173,7 +207,9 @@ bulk:
 **_Files locations:_**
 
 - ```yml``` files should be placed in ```changelog``` folder 
--  ```files``` which contains  ```repo names``` should be places in repo_List folder
+- ```files``` which contains  _**repo names**_ should be places in ```repo_list``` folder
+- ```files``` for create action should be placed in ```changelog/files``` folder
+
 
 
 **_About PAT:_**
