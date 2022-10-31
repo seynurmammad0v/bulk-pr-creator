@@ -62,6 +62,13 @@ def validate_file(path):
         sys.exit(5)
 
 
+def validate_ms(path):
+    if not os.path.exists(path):
+        print("The necessary file is not exist :" + path)
+        return False
+    return True
+
+
 def get_ms_list(filename):
     path = "repo_list/{}".format(filename)
     validate_file(path)

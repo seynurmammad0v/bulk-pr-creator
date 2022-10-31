@@ -2,7 +2,7 @@ import os
 import shutil
 import time
 
-from helper import get_ms_list, cancel_pipeline
+from helper import get_ms_list, cancel_pipeline, validate_ms
 
 
 def open_pr(data):
@@ -12,6 +12,8 @@ def open_pr(data):
         ms = ms.replace('\n', '')
         url = "https://oauth2:{}@github.com/{}/{}.git".format(os.getenv('GITHUB_TOKEN'), org, ms)
         os.system('git clone {}'.format(url))
+        if not validate_ms(ms):
+            continue
         os.system('git remote set-url origin {}'.format(url))
         os.chdir(ms)
         os.system("git checkout {}".format(data.get('from')))
