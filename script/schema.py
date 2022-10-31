@@ -3,7 +3,6 @@ schema = {
         'required': True,
         'schema': {
             'edit': {
-                'required': True,
                 'schema': {
                     'files': {
                         "type": "list",
@@ -61,7 +60,28 @@ schema = {
                     }
                 }
             },
-
+            'pr': {
+                'schema': {
+                    'from': {'type': 'string', 'required': True},
+                    'to': {'type': 'string', 'required': True},
+                    'name': {'type': 'string', 'required': True},
+                    'body': {'type': 'string', 'required': True},
+                    'assignee': {'type': 'string', 'required': True},
+                    'cancel': {
+                        'required': True,
+                        'schema': {
+                            'pipeline': {
+                                'required': True,
+                                'type': 'boolean'
+                            }
+                        }
+                    },
+                    'repos': {
+                        'required': True,
+                        'type': 'string'
+                    }
+                },
+            }
         }
     }
 }

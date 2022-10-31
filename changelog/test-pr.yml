@@ -1,0 +1,10 @@
+bulk:
+  pr:
+    from: test/setup-java
+    to: develop
+    name: "Test bulk pr script"
+    body: "Test body"
+    assignee: "@me"
+    cancel:
+      pipeline: true
+    repos: repos.md
