@@ -5,8 +5,6 @@ on: push
 env:
   GITHUB_ORG: ${{ secrets.GH_ORG }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-  ENCRYPTED_VALUE: ${{ secrets.ENCRYPTED_VALUE }}
-  KEY_ID: ${{ secrets.KEY_ID }}
 
 jobs:
   deploy-repo:
@@ -34,5 +32,5 @@ jobs:
           chmod u+x apply.sh
           ./apply.sh
     # todo uncomment
-    #      - name: Updating github PAT from secrets to null
+    #      - name: Updating github PAT from secret to null
     #        run: gh secret set GH_TOKEN --body "null"
