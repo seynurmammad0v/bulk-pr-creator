@@ -1,6 +1,6 @@
 <h1 align="center"> bulk-pr-creator </h1><br>
 
-## Table of Contents
+## _Table of Contents_
 
 - [Introduction](#introduction)
 - [How to run](#how-to-run)
@@ -80,7 +80,7 @@ $ python ./script/main.py <filename>
 > ```<filename>``` name of the yml \
 > Please provide file name  **without** extension
 
-### Templates
+## _Templates_
 
 **_There are 3 type of actions:_**
 
@@ -168,7 +168,7 @@ bulk:
     repos: <name of repo list with extension>
 ```
 
-### Postscript
+## _Postscript_
 
 **_Files locations:_**
 
