@@ -27,11 +27,10 @@ _**Install python with**_ [**_brew_**](https://brew.sh/#install)  :
 $ brew install python
 ```
 
-**_Install python libraries pyyaml and cerberus :_**
+**_Install python libraries from ```requirements.txt``` :_**
 
 ```
-$ pip install pyyaml
-$ pip install cerberus
+$ pip install -r requirements.txt
 ```
 
 **_Install_** [**_GitHub CLI_**](https://cli.github.com/) :
