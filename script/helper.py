@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 import sys
 import time
@@ -12,13 +13,13 @@ def change_str(path, changes):
         s = f.read()
         is_changed = False
         for change in changes:
-            if change.get('from') in s:
+            if change.get('from') in s or re.compile(change.get('from')).search(s):
                 is_changed = True
-                with open(path, 'w') as f:
-                    s = s.replace(change.get('from'), change.get('to'))
-                    f.write(s)
+                s = re.sub(change.get('from'), change.get('to'), s)
             else:
                 print('{} NOT FOUND in {}'.format(change.get('from'), path))
+        with open(path, 'w') as f:
+            f.write(s)
         return is_changed
 
 

@@ -94,15 +94,15 @@ bulk:
     files:
       - path: <path the file in ms which will be edited>
         changes:
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
       - path: <path the file in ms which will be edited>
         changes:
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
     github:
       branch: <branch-name>
@@ -162,15 +162,15 @@ bulk:
     files:
       - path: <path the file in ms which will be edited>
         changes:
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
       - path: <path the file in ms which will be edited>
         changes:
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
     github:
       branch: <branch-name>
@@ -209,7 +209,9 @@ bulk:
 - ```files``` which contains  _**repo names**_ should be places in ```repo_list``` folder
 - ```files``` for create action should be placed in ```changelog/files``` folder
 
+**_Input issues:_**
 
+Please provide correct ```regexp```, you can check your expression on [this](https://regex101.com/) site
 
 **_About PAT:_**
 

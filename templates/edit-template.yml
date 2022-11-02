@@ -3,15 +3,15 @@ bulk:
     files:
       - path: <path the file in ms which will be edited>
         changes:
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
       - path: <path the file in ms which will be edited>
         changes:
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
     github:
       branch: <branch name>
