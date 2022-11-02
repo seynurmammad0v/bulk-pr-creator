@@ -21,8 +21,8 @@ jobs:
           python-version: '3.10'
       - name: Install libraries
         run: |
-          pip install pyyaml
-          pip install cerberus
+          pip install -r requirements.txt
+        shell: bash
       - name: Identify user
         run: |
           git config --global user.email "${GITHUB_ACTOR}"
