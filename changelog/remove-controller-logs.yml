@@ -1,0 +1,24 @@
+bulk:
+  edit:
+    files:
+      - find-folder: control
+        changes:
+          - from: logger\.[t|d|i|w].+\);
+            to: ''
+          - from: log\.[t|d|i|w].+\);
+            to: ''
+    github:
+      branch: script-remove-controller-logs
+      commit: 'Removing controller level logs'
+      cancel:
+        pipeline: false
+    repos: repos.md
+  pr:
+    from: script-remove-controller-logs
+    to: develop
+    name: 'SPS: Removing controller level logs'
+    body: "Removing controller level logs"
+    assignee: "@me"
+    cancel:
+      pipeline: false
+    repos: repos.md

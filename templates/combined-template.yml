@@ -1,17 +1,17 @@
 bulk:
   edit:
     files:
-      - path: <path the file in ms which will be edited>
+      - absolute-path: <path the file in ms which will be edited>
         changes:
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
-          - from: <what to change>
-            to: <change to>
-      - path: <path the file in ms which will be edited>
+      - find-folder: <path the file in ms which will be edited (regex allowed)>
         changes:
-          - from: <what to change>
+          - from: <regexp>
             to: <change to>
-          - from: <what to change>
+      - find-file: <file name by name (regex allowed)>
+        changes:
+          - from: <regexp>
             to: <change to>
     github:
       branch: <branch name>

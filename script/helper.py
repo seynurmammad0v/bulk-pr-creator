@@ -6,6 +6,7 @@ import time
 
 from cerberus import Validator
 from schema import schema
+import const
 
 
 def change_str(path, changes):
@@ -93,3 +94,14 @@ def login_git(org, ms, branch):
     os.system('git remote set-url origin {}'.format(url))
     os.system('git checkout {} 2>/dev/null || git checkout -b {}'.format(branch, branch))
     return True
+
+
+def define_flow(data):
+    if data.get(const.ABSOLUTE) is not None:
+        return const.ABSOLUTE
+    elif data.get(const.FIND_FOLDER) is not None:
+        return const.FIND_FOLDER
+    elif data.get(const.FIND_FILE) is not None:
+        return const.FIND_FILE
+    else:
+        return const.NONE

@@ -65,7 +65,7 @@ $ python ./script/main.py <filename> {<org> | <username>} <token>
 
 > ```GH_ORG``` name of organization (or username of user) in which repo located
 
-> ```GH_TOKEN``` personal access token of
+> ```GHA_PAT``` personal access token of
 >user ([How to create PAT?](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)) \
 > Please be sure that you'd grant **right** scope to token
 
@@ -92,24 +92,55 @@ _**The edit action changes file, commit and push changes to GitHub.**_
 bulk:
   edit:
     files:
-      - path: <path the file in ms which will be edited>
+      - absolute-path: <path the file in ms which will be edited>
         changes:
           - from: <regexp>
             to: <change to>
-          - from: <regexp>
-            to: <change to>
-      - path: <path the file in ms which will be edited>
+      - find-folder: <path the file in ms which will be edited (regex allowed)>
         changes:
           - from: <regexp>
             to: <change to>
+      - find-file: <file name by name (regex allowed)>
+        changes:
           - from: <regexp>
             to: <change to>
     github:
-      branch: <branch-name>
-      commit: <commit-name>
+      branch: <branch name>
+      commit: <commit name>
       cancel:
         pipeline: <true if you want to cancel the pipeline otherwise false >
     repos: <name of repo list with extension>
+
+```
+
+```Edit action should contain only one path definition (absolute-path, find-folder, find-file) per element.  ```
+
+```INCORRECT YML file:```
+```yaml
+bulk:
+  edit:
+    files:
+      - absolute-path: <path the file in ms which will be edited>
+        find-file: <file name by name (regex allowed)>       
+        changes:
+          - from: <regexp>
+            to: <change to>
+```
+
+
+```CORRECT YML file:```
+```yaml
+bulk:
+  edit:
+    files:
+      - absolute-path: <path the file in ms which will be edited>
+        changes:
+          - from: <regexp>
+            to: <change to>
+      - find-file: <file name by name (regex allowed)> 
+        changes:
+          - from: <regexp>
+            to: <change to>
 
 ```
 
@@ -160,30 +191,18 @@ _**You can also combine this actions in one yml file**_ :
 bulk:
   edit:
     files:
-      - path: <path the file in ms which will be edited>
+      - absolute-path: <path the file in ms which will be edited>
         changes:
           - from: <regexp>
             to: <change to>
-          - from: <regexp>
-            to: <change to>
-      - path: <path the file in ms which will be edited>
+      - find-folder: <path the file in ms which will be edited (regex allowed)>
         changes:
           - from: <regexp>
             to: <change to>
+      - find-file: <file name by name (regex allowed)>
+        changes:
           - from: <regexp>
             to: <change to>
-    github:
-      branch: <branch-name>
-      commit: <commit-name>
-      cancel:
-        pipeline: <true if you want to cancel the pipeline otherwise false >
-    repos: <name of repo list with extension>
-  create:
-    files:
-      - filename: <file name with extension>
-        destination : <destination of file>
-      - filename: <file name with extension>
-        destination: <destination of file>
     github:
       branch: <branch name>
       commit: <commit name>
@@ -191,14 +210,14 @@ bulk:
         pipeline: <true if you want to cancel the pipeline otherwise false >
     repos: <name of repo list with extension>
   pr:
-    from: <branch-name which from creating pr>
-    to: <pr to branch-name>
+    from: <branch-name>
+    to: <branch-name>
     name: <PR-name>
     body: <PR-body>
-    assignee: <Assign pr to people by their login. Use "@me" to self-assign.>
+    assignee: <assignee-person>
     cancel:
-      pipeline: <true if you want to cancel the pipeline otherwise false >
-    repos: <name of repo list with extension>
+      pipeline: <true|false>
+    repos: <repos-list-file>
 ```
 
 ## _Postscript_

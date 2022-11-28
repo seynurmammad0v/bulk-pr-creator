@@ -1,18 +1,18 @@
 bulk:
   edit:
     files:
-      - path: build.gradle
+      - find-folder: rest
         changes:
-          - from: "org.springframework.cloud:spring-cloud-starter-netflix-hystrix:2.2.7.RELEASE"
-            to: 'test'
-          - from: "annotationProcessor('org.mapstruct:mapstruct-jdk8:1.3.1.Final')"
-            to: 'test2'
-      - path: Dockerfile
+          - from: logger\..+\);
+            to: ''
+          - from: log\..+\);
+            to: ''
+      - find-folder: test
         changes:
-          - from: 'FROM ictcontact/openjdk:jdk-13.0.1-nonroot'
-            to: 'FROM ictcontact/openjdk:jdk-13.0.1-test'
-          - from: 'EXPOSE 80'
-            to: 'EXPOSE 8081'
+          - from: logger\..+\);
+            to: ''
+          - from: log\..+\);
+            to: ''
     github:
       branch: test-bulk-pr-script
       commit: 'Testing bulk pr'

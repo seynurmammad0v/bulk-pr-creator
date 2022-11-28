@@ -11,9 +11,16 @@ schema = {
                             {
                                 "type": "dict",
                                 "schema": {
-
-                                    'path': {
-                                        'required': True,
+                                    'absolute-path': {
+                                        'required': False,
+                                        'type': 'string'
+                                    },
+                                    'find-folder': {
+                                        'required': False,
+                                        'type': 'string'
+                                    },
+                                    'find-file': {
+                                        'required': False,
                                         'type': 'string'
                                     },
                                     'changes': {

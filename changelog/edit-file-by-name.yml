@@ -1,0 +1,15 @@
+bulk:
+  edit:
+    files:
+      - find-file: \w+ontr\w+
+        changes:
+          - from: logger\.[t|d|i|w].+\);
+            to: ''
+          - from: log\.[t|d|i|w].+\);
+            to: ''
+    github:
+      branch: script-remove-controller-logs-by-file-name
+      commit: 'Removing controller level logs'
+      cancel:
+        pipeline: false
+    repos: repos.md

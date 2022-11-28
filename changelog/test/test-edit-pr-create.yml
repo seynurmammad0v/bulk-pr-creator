@@ -1,13 +1,13 @@
 bulk:
   edit:
     files:
-      - path: build.gradle
+      - find-file: build.gradle
         changes:
           - from: "org.springframework.cloud:spring-cloud-starter-netflix-hystrix:2.2.7.RELEASE"
             to: 'test'
           - from: "annotationProcessor('org.mapstruct:mapstruct-jdk8:1.3.1.Final')"
             to: 'test2'
-      - path: Dockerfile
+      - find-file: Dockerfile
         changes:
           - from: 'FROM ictcontact/openjdk:jdk-13.0.1-nonroot'
             to: 'FROM ictcontact/openjdk:jdk-13.0.1-test'
