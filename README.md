@@ -240,3 +240,9 @@ off this step by commenting   ```"Updating GitHub PAT from secret to null"``` st
 **_Self-preservation_**
 
 Please comment all commands in ```apply.sh``` to avoid unwanted execution 
+
+**_You can use next command for getting all org repos (run in repo folder) :_**
+
+```
+$ gh repo list $ORG -L 1000 --json name --jq '.[].name' >> repo_list/all_org_repos.md
+```
