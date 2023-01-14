@@ -81,7 +81,7 @@ def edit_file_by_name(data, conf_type):
 
 
 def do_changes(path, data, conf_type):
-    # try:
+    try:
         current_change = False
         if conf_type == const.FILE:
             current_change = change_str(path, data)
@@ -90,6 +90,6 @@ def do_changes(path, data, conf_type):
         if not current_change:
             print("No changes in {}", path)
         return current_change
-    # except:
-    #     print("An exception occurred in path {}".format(path))
-    #     return False
+    except:
+        print("An exception occurred in path {}".format(path))
+        return False
