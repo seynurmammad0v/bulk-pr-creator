@@ -218,4 +218,8 @@ cython_debug/
 /.idea/vcs.xml
 /.idea/.name
 /.idea/
-
+repo_list
+apply.sh
+ts.py
+output.txt
+output2.txt
