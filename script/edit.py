@@ -77,7 +77,7 @@ def edit_file_by_name(data, conf_type):
             if (name == file_name or re.compile(file_name).search(name)) and "main" in root:
                 path = root + '/{}'.format(name)
                 is_changed = detect_change(is_changed, do_changes(path, data.get('changes'), conf_type))
-    return True
+    return is_changed
 
 
 def do_changes(path, data, conf_type):
