@@ -4,9 +4,43 @@ schema = {
         'schema': {
             'edit': {
                 'schema': {
+                    'config': {
+                        "type": "list",
+                        'required': False,
+                        "schema":
+                            {
+                                "type": "dict",
+                                "schema": {
+                                    'absolute-path': {
+                                        'required': False,
+                                        'type': 'string'
+                                    },
+                                    'find-folder': {
+                                        'required': False,
+                                        'type': 'string'
+                                    },
+                                    'find-file': {
+                                        'required': False,
+                                        'type': 'string'
+                                    },
+                                    'changes': {
+                                        "type": "list",
+                                        'required': True,
+                                        "schema": {
+                                            'type': 'dict',
+                                            'required': True,
+                                            'schema': {
+                                                'file': {'type': 'string', 'required': True},
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+                    },
                     'files': {
                         "type": "list",
-                        'required': True,
+                        'required': False,
                         "schema":
                             {
                                 "type": "dict",

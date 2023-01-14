@@ -3,7 +3,7 @@ import sys
 
 import yaml
 
-from edit import edit_file
+from edit import edit
 from helper import validate, validate_yml
 from pr import open_pr
 from create import create_file
@@ -32,7 +32,7 @@ if __name__ == '__main__':
     data = data['bulk']
 
     if data.get('edit'):
-        edit_file(data.get('edit'))
+        edit(data.get('edit'))
 
     if data.get('create'):
         create_file(data.get('create'))

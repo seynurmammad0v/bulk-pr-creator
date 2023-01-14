@@ -4,6 +4,7 @@ import shutil
 import sys
 import time
 
+import hiyapyco
 from cerberus import Validator
 from schema import schema
 import const
@@ -27,7 +28,7 @@ def change_str(path, changes):
 def push_changes(github):
     os.system('git add .')
     os.system('git commit -m "{}"'.format(github.get('commit')))
-    os.system('git push -u origin {}'.format(github.get('branch')))
+    os.system('git push -u origin bulk-{}'.format(github.get('branch')))
 
 
 def cancel_pipeline(data):
@@ -92,7 +93,7 @@ def login_git(org, ms, branch):
         return False
     os.chdir(ms)
     os.system('git remote set-url origin {}'.format(url))
-    os.system('git checkout {} 2>/dev/null || git checkout -b {}'.format(branch, branch))
+    os.system('git checkout bulk-{} 2>/dev/null || git checkout -b bulk-{}'.format(branch, branch))
     return True
 
 
@@ -105,3 +106,20 @@ def define_flow(data):
         return const.FIND_FILE
     else:
         return const.NONE
+
+
+def detect_change(prev, new):
+    if prev:
+        return prev
+    if new:
+        return new
+    return False
+
+
+def change_yml(path, changes):
+    for change in changes:
+        merged_yaml = hiyapyco.load([path, "../changelog/files/{}".format(change.get('file'))], method=hiyapyco.METHOD_MERGE)
+        with open(path, 'w') as stream:
+            stream.write(hiyapyco.dump(merged_yaml))
+
+    return True
