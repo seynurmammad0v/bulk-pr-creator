@@ -1,0 +1,5 @@
+bulk:
+  revert:
+    branch: change-checkout-version
+    repos: repos.md
+    commit : 'Adding jmx config for instana'

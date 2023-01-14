@@ -7,4 +7,4 @@ bulk:
     assignee: "@me"
     cancel:
       pipeline: false
-    repos: all_org_repos.md
+    repos: repos.md

@@ -1,0 +1,12 @@
+bulk:
+  edit:
+    config:
+       - find-file: application.yml
+         changes:
+           - file: jmx-config.yml
+    github:
+      branch: change-checkout-version
+      commit: 'Adding jmx config for instana'
+      cancel:
+        pipeline: false
+    repos: repos.md

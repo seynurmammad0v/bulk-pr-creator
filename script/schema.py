@@ -2,6 +2,22 @@ schema = {
     'bulk': {
         'required': True,
         'schema': {
+            'revert': {
+                'schema': {
+                    'branch': {
+                        'required': True,
+                        'type': 'string'
+                    },
+                    'repos': {
+                        'required': True,
+                        'type': 'string'
+                    },
+                    'commit': {
+                        'required': False,
+                        'type': 'string'
+                    }
+                },
+            },
             'edit': {
                 'schema': {
                     'config': {

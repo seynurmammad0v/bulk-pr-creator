@@ -7,6 +7,7 @@ from edit import edit
 from helper import validate, validate_yml
 from pr import open_pr
 from create import create_file
+from revert import revert
 
 if __name__ == '__main__':
     N = len(sys.argv)
@@ -30,6 +31,8 @@ if __name__ == '__main__':
     validate_yml(data, filepath)
 
     data = data['bulk']
+    if data.get('revert'):
+        revert(data.get('revert'))
 
     if data.get('edit'):
         edit(data.get('edit'))
