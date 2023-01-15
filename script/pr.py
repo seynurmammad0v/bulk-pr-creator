@@ -27,14 +27,13 @@ def open_pr(data):
                  '-f', 'body=\'{}\''.format(data.get('body')),
                  '-f', 'head=PB-Digital:bulk-{}'.format(data.get('from')),
                  '-f', 'base={}'.format(data.get('to'))])
-            index = index + 1
             print('Success {}'.format(ms))
         except subprocess.CalledProcessError as e:
             message = str(e.output, "utf-8")
             if 'You have exceeded a secondary rate limit' in message:
-                print("TERMINATING - 403 exceeded a secondary rate limit service {}".format(ms))
-                index = index - 1
+                print("403 exceeded a secondary rate limit service {} \nTrying again after few minutes".format(ms))
                 time.sleep(180)
+                continue
             if 'A pull request already exists for' in message:
                 print("PR exist {}".format(ms))
                 index = index + 1
@@ -44,7 +43,8 @@ def open_pr(data):
                 index = index + 1
                 continue
             else:
-                print("ms- {} message - {}".format(ms, message))
+                print("Service - {} message - {}".format(ms, message))
                 index = index + 1
                 continue
-        time.sleep(5)
+        index = index + 1
+        time.sleep(7)
