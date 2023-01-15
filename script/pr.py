@@ -23,8 +23,8 @@ def open_pr(data):
                  '--method', 'POST',
                  '-H', 'Accept:application/vnd.github+json',
                  '/repos/{}/{}/pulls'.format(org, ms),
-                 '-f', 'title=\'{}\''.format(data.get('name')),
-                 '-f', 'body=\'{}\''.format(data.get('body')),
+                 '-f', 'title={}'.format(data.get('name')),
+                 '-f', 'body={}'.format(data.get('body')),
                  '-f', 'head=PB-Digital:bulk-{}'.format(data.get('from')),
                  '-f', 'base={}'.format(data.get('to'))])
             print('Success {}'.format(ms))
